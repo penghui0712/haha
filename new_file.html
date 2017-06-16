@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>动画</title>
+	</head>
+	<style>
+		body,html,p,ul,li,a,dl,dt,dd{margin: 0;padding: 0;}
+		html{width:100%;height: 100%;background: #fff; font-size: 100px;}
+		body .container{width:7.5rem;height:12.28rem;overflow: hidden;}
+		.container img{width:100%;height:100%;}
+		.succe{width:5.5rem;height:2.35rem;position:fixed;left:1rem;top:3.5rem;display:none;}
+		.succe img{display: block;width:5.5rem;height:2.35rem;}
+	</style>
+	<body>
+		<div class="container">
+			<img src="animate.gif"/>
+		</div>
+		<div class="succe"><img src="ic_succes.png"/></div>
+	</body>
+	<script type="text/javascript" src="jquery-1.11.0.js"></script>
+	<script>
+		(function(doc,win){
+			var docEl = doc.documentElement,resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function(){
+				var clientWidth = docEl.clientWidth;
+				if(!clientWidth) return;
+				if(clientWidth>=750){
+					docEl.style.fontSize = '100px';
+				}
+				else{
+					docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+				}
+			};
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document,window);
+	</script>
+	<script>
+		setInterval(function(){
+			$(".succe").css("display","block")
+		},2800)
+	</script>
+</html>
+
